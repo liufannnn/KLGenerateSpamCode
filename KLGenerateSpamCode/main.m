@@ -46,7 +46,7 @@ NSString *randomString(NSInteger length) {
     return ret;
 }
 
-NSString *randomLetter() {
+NSString *randomLetter(void) {
     return [NSString stringWithFormat:@"%C", [kRandomAlphabet characterAtIndex:arc4random_uniform(52)]];
 }
 
@@ -287,7 +287,7 @@ int main(int argc, const char * argv[]) {
             printf("修改工程名完成\n");
         }
         if (oldClassNamePrefix && newClassNamePrefix) {
-            printf("开始修改类名前缀...\n");
+            printf("开始修改类名前缀、后缀...\n");
             @autoreleasepool {
                 // 打开工程文件
                 NSError *error = nil;
@@ -301,7 +301,7 @@ int main(int argc, const char * argv[]) {
                 
                 [projectContent writeToFile:projectFilePath atomically:YES encoding:NSUTF8StringEncoding error:nil];
             }
-            printf("修改类名前缀完成\n");
+            printf("修改类名前缀、后缀完成\n");
         }
         if (outDirString) {
             NSMutableString *categoryCallImportString = [NSMutableString string];
@@ -879,6 +879,17 @@ void modifyFilesClassName(NSString *sourceCodeDir, NSString *oldClassName, NSStr
     }
 }
 
+NSString *modifyFilesClassSuffixName(NSString *oldName, NSString *oldSuffixName,  NSString * _Nullable newSuffixName) {
+    NSString *newName;
+    newName = [oldName substringToIndex:oldName.length - oldSuffixName.length];
+    if (newSuffixName == nil) {
+        newName = [newName stringByAppendingString:randomString(oldSuffixName.length)];
+    } else {
+        newName = [newName stringByAppendingString:newSuffixName];
+    }
+    return  newName;
+}
+
 void modifyClassNamePrefix(NSMutableString *projectContent, NSString *sourceCodeDir, NSArray<NSString *> *ignoreDirNames, NSString *oldName, NSString *newName) {
     NSFileManager *fm = [NSFileManager defaultManager];
     
@@ -909,6 +920,37 @@ void modifyClassNamePrefix(NSMutableString *projectContent, NSString *sourceCode
             }else{
                 newClassName = [newName stringByAppendingString:fileName];
             }
+        }
+        
+        // 修改文件名、类名后缀
+        if ([newClassName hasSuffix:@"ViewController"]) {
+            newClassName = modifyFilesClassSuffixName(newClassName, @"ViewController", @"ShiTuKZQ");
+        } else if ([newClassName hasSuffix:@"Controller"]) {
+            newClassName = modifyFilesClassSuffixName(newClassName, @"Controller", @"ShiTuKZQ");
+        } else if ([newClassName hasSuffix:@"HeaderView"]) {
+            newClassName = modifyFilesClassSuffixName(newClassName, @"HeaderView", @"TouShiTu");
+        } else if ([newClassName hasSuffix:@"FooterView"]) {
+            newClassName = modifyFilesClassSuffixName(newClassName, @"FooterView", @"WeiShiTu");
+        } else if ([newClassName hasSuffix:@"View"]) {
+            newClassName = modifyFilesClassSuffixName(newClassName, @"View", @"ShiTu");
+        } else if ([newClassName hasSuffix:@"ViewCell"]) {
+            newClassName = modifyFilesClassSuffixName(newClassName, @"ViewCell", @"ShiTuHang");
+        } else if ([newClassName hasSuffix:@"Cell"]) {
+            newClassName = modifyFilesClassSuffixName(newClassName, @"Cell", @"ShiTuHang");
+        } else if ([newClassName hasSuffix:@"Header"]) {
+            newClassName = modifyFilesClassSuffixName(newClassName, @"Header", @"Tou");
+        } else if ([newClassName hasSuffix:@"Footer"]) {
+            newClassName = modifyFilesClassSuffixName(newClassName, @"Footer", @"Wei");
+        } else if ([newClassName hasSuffix:@"Model"]) {
+            newClassName = modifyFilesClassSuffixName(newClassName, @"Model", @"Moxing");
+        } else if ([newClassName hasSuffix:@"Item"]) {
+            newClassName = modifyFilesClassSuffixName(newClassName, @"Item", @"Moxing");
+        } else if ([newClassName hasSuffix:@"Helper"]) {
+            newClassName = modifyFilesClassSuffixName(newClassName, @"Helper", @"Zhushou");
+        } else if ([newClassName hasSuffix:@"Manager"]) {
+            newClassName = modifyFilesClassSuffixName(newClassName, @"Manager", @"Guanli");
+        } else {
+            newClassName = [newClassName stringByAppendingString:randomString(newName.length)];
         }
         
         // 文件名 Const.ext > DDConst.ext
