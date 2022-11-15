@@ -14,12 +14,10 @@
 1. 用 Xcode 打开工程并配置参数。如图![配置参数](https://github.com/klaus01/KLGenerateSpamCode/raw/master/images/p2.png)
 1. 运行
 
-### 使用二进制文件，在终端中执行 GenerateSpamCode
-```
-$ ./GenerateSpamCode \
-/Users/kelei/Documents/work/git/projectName/source \
--deleteComments
-```
+> ⚠️ 注意
+>
+> 1. 不要在文件夹名称中使用.和空格等特殊字符
+> 1. 不要让类名、文件名和文件夹名称相同
 
 ### 参数说明
 - *(必填)* **源码文件夹绝对路径**（如：`/Users/kelei/Documents/work/git/projectName/source`）

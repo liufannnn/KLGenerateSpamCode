@@ -927,6 +927,12 @@ void modifyClassNamePrefix(NSMutableString *projectContent, NSString *sourceCode
                     renameFile(oldFilePath, newFilePath);
                 }
                 
+                oldFilePath = [[sourceCodeDir stringByAppendingPathComponent:fileName] stringByAppendingPathExtension:@"storyboard"];
+                if ([fm fileExistsAtPath:oldFilePath]) {
+                    newFilePath = [[sourceCodeDir stringByAppendingPathComponent:newClassName] stringByAppendingPathExtension:@"storyboard"];
+                    renameFile(oldFilePath, newFilePath);
+                }
+                
                 @autoreleasepool {
                     modifyFilesClassName(gSourceCodeDir, fileName, newClassName);
                 }
@@ -940,6 +946,12 @@ void modifyClassNamePrefix(NSMutableString *projectContent, NSString *sourceCode
             oldFilePath = [[sourceCodeDir stringByAppendingPathComponent:fileName] stringByAppendingPathExtension:@"xib"];
             if ([fm fileExistsAtPath:oldFilePath]) {
                 newFilePath = [[sourceCodeDir stringByAppendingPathComponent:newClassName] stringByAppendingPathExtension:@"xib"];
+                renameFile(oldFilePath, newFilePath);
+            }
+            
+            oldFilePath = [[sourceCodeDir stringByAppendingPathComponent:fileName] stringByAppendingPathExtension:@"storyboard"];
+            if ([fm fileExistsAtPath:oldFilePath]) {
+                newFilePath = [[sourceCodeDir stringByAppendingPathComponent:newClassName] stringByAppendingPathExtension:@"storyboard"];
                 renameFile(oldFilePath, newFilePath);
             }
             
