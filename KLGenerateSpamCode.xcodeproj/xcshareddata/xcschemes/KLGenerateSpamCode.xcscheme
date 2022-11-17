@@ -61,11 +61,23 @@
             isEnabled = "NO">
          </CommandLineArgument>
          <CommandLineArgument
-            argument = "-ignoreDirNames ThirdLibs,SwiftGen,SupportingFiles,Resources,HaitianNeutral,HaitianAppDelegate"
+            argument = "-handleXcassets"
+            isEnabled = "NO">
+         </CommandLineArgument>
+         <CommandLineArgument
+            argument = "-ignoreDirNames ThirdLibs,SwiftGen"
+            isEnabled = "YES">
+         </CommandLineArgument>
+         <CommandLineArgument
+            argument = "-deleteComments"
             isEnabled = "YES">
          </CommandLineArgument>
          <CommandLineArgument
             argument = "-modifyClassNamePrefix /Users/liufan/Desktop/&#x5927;&#x6d32;/SourceCode/Haitian&#x7684;&#x526f;&#x672c;/Haitian/Haitian.xcodeproj Dazoo&gt;Haitian"
+            isEnabled = "YES">
+         </CommandLineArgument>
+         <CommandLineArgument
+            argument = "-spamCodeOut /Users/liufan/Desktop/&#x5927;&#x6d32;/SourceCode/Haitian&#x7684;&#x526f;&#x672c;/Haitian/Haitian/HaitianLJDM ljdm"
             isEnabled = "YES">
          </CommandLineArgument>
       </CommandLineArguments>
