@@ -707,7 +707,7 @@ void deleteComments(NSString *directory, NSArray<NSString *> *ignoreDirNames) {
     }
 }
 
-#pragma mark - 修改工程名
+#pragma mark - 修改工程名 >>> 不太好用，建议不用
 
 void resetEntitlementsFileName(NSString *projectPbxprojFilePath, NSString *oldName, NSString *newName) {
     NSString *rootPath = projectPbxprojFilePath.stringByDeletingLastPathComponent.stringByDeletingLastPathComponent;
