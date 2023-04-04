@@ -5,15 +5,40 @@
 //  Created by 柯磊 on 2017/7/5.
 //  Copyright © 2017年 GAEA. All rights reserved.
 //
+/*
+ ⚠️使用注意
+ 
+ 不建议多个命令一起执行，建议按顺序分开执行：
+ 
+ 1. 手动修改适合脚本的文件夹、文件、类、结构体、枚举、别名、图片和资源文件等
+    - 文件夹/文件名等不要有：空格、+ 和 . 等特殊字符
+    - 文件夹/文件名等不要相同
+ 2. 命令行修改工程目录下所有 png 资源 hash 值
+    - 使用 ImageMagick 进行图片压缩，安装方法：brew install imagemagick
+ 
+         find . -iname "*.png" -exec echo {} \; -exec convert {} {} \;
+         or
+         find . -iname "*.png" -exec echo {} \; -exec convert {} -quality 95 {} \;
+ 
+ 3. 脚本修改类名/文件名
+ 4. 手动移除 SwiftLint 脚本
+ 5. 脚本删除注释
+    - 多行注释不要嵌套，否则脚本识别不到
+ 6. 添加垃圾代码
+  
+ 
+ 1. 马甲包上架总结
+    - 启动图、Logo必须不一样
+    - 修改工程中全部文件夹、文件、类、结构体、枚举和别名等
+    - 添加垃圾代码混淆
+    - 增删改部分模块，不能完全一摸一样
+    - App Store 内的内容：项目描述、宣传图、测试账号等不能一样
+ 2. [马甲包上架操作细则](https://zfjobslib.top/detail.html)
+ 3. [类名、方法名和属性名混淆脚本参考](https://www.jianshu.com/p/5b6cbbe79e78)
+ */
 
 #import <Foundation/Foundation.h>
 #include <stdlib.h>
-
-// 命令行修改工程目录下所有 png 资源 hash 值
-// 使用 ImageMagick 进行图片压缩，所以需要安装 ImageMagick，安装方法 brew install imagemagick
-// find . -iname "*.png" -exec echo {} \; -exec convert {} {} \;
-// or
-// find . -iname "*.png" -exec echo {} \; -exec convert {} -quality 95 {} \;
 
 typedef NS_ENUM(NSInteger, GSCSourceType) {
     GSCSourceTypeClass,
@@ -924,9 +949,9 @@ void modifyClassNamePrefix(NSMutableString *projectContent, NSString *sourceCode
         
         // 修改文件名、类名后缀
         if ([newClassName hasSuffix:@"ViewController"]) {
-            newClassName = modifyFilesClassSuffixName(newClassName, @"ViewController", @"ShiTuKZQ");
+            newClassName = modifyFilesClassSuffixName(newClassName, @"ViewController", @"ShiTuKzq");
         } else if ([newClassName hasSuffix:@"Controller"]) {
-            newClassName = modifyFilesClassSuffixName(newClassName, @"Controller", @"ShiTuKZQ");
+            newClassName = modifyFilesClassSuffixName(newClassName, @"Controller", @"ShiTuKzq");
         } else if ([newClassName hasSuffix:@"HeaderView"]) {
             newClassName = modifyFilesClassSuffixName(newClassName, @"HeaderView", @"TouShiTu");
         } else if ([newClassName hasSuffix:@"FooterView"]) {
@@ -942,13 +967,13 @@ void modifyClassNamePrefix(NSMutableString *projectContent, NSString *sourceCode
         } else if ([newClassName hasSuffix:@"Footer"]) {
             newClassName = modifyFilesClassSuffixName(newClassName, @"Footer", @"Wei");
         } else if ([newClassName hasSuffix:@"Model"]) {
-            newClassName = modifyFilesClassSuffixName(newClassName, @"Model", @"Moxing");
+            newClassName = modifyFilesClassSuffixName(newClassName, @"Model", @"MoXing");
         } else if ([newClassName hasSuffix:@"Item"]) {
-            newClassName = modifyFilesClassSuffixName(newClassName, @"Item", @"Moxing");
+            newClassName = modifyFilesClassSuffixName(newClassName, @"Item", @"MoXing");
         } else if ([newClassName hasSuffix:@"Helper"]) {
-            newClassName = modifyFilesClassSuffixName(newClassName, @"Helper", @"Zhushou");
+            newClassName = modifyFilesClassSuffixName(newClassName, @"Helper", @"ZhuShou");
         } else if ([newClassName hasSuffix:@"Manager"]) {
-            newClassName = modifyFilesClassSuffixName(newClassName, @"Manager", @"Guanli");
+            newClassName = modifyFilesClassSuffixName(newClassName, @"Manager", @"GuanLi");
         } else {
             newClassName = [newClassName stringByAppendingString:randomString(newName.length)];
         }

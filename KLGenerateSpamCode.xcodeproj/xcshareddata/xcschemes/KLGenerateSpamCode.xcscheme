@@ -53,7 +53,7 @@
       </BuildableProductRunnable>
       <CommandLineArguments>
          <CommandLineArgument
-            argument = "/Users/liufan/Desktop/&#x5927;&#x6d32;/SourceCode/Haitian&#x7684;&#x526f;&#x672c;/Haitian/Haitian"
+            argument = "/Users/liufan/Desktop/&#x5927;&#x6d32;/SourceCode/YVR&#x7684;&#x526f;&#x672c;/YVR/YVR"
             isEnabled = "YES">
          </CommandLineArgument>
          <CommandLineArgument
@@ -70,14 +70,14 @@
          </CommandLineArgument>
          <CommandLineArgument
             argument = "-deleteComments"
-            isEnabled = "YES">
+            isEnabled = "NO">
          </CommandLineArgument>
          <CommandLineArgument
-            argument = "-modifyClassNamePrefix /Users/liufan/Desktop/&#x5927;&#x6d32;/SourceCode/Haitian&#x7684;&#x526f;&#x672c;/Haitian/Haitian.xcodeproj Dazoo&gt;Haitian"
-            isEnabled = "YES">
+            argument = "-modifyClassNamePrefix /Users/liufan/Desktop/&#x5927;&#x6d32;/SourceCode/YVR&#x7684;&#x526f;&#x672c;/YVR/YVR.xcodeproj Dazoo&gt;YVR"
+            isEnabled = "NO">
          </CommandLineArgument>
          <CommandLineArgument
-            argument = "-spamCodeOut /Users/liufan/Desktop/&#x5927;&#x6d32;/SourceCode/Haitian&#x7684;&#x526f;&#x672c;/Haitian/Haitian/HaitianLJDM ljdm"
+            argument = "-spamCodeOut /Users/liufan/Desktop/&#x5927;&#x6d32;/SourceCode/YVR&#x7684;&#x526f;&#x672c;/YVR/YVR/YVRLJDM ljdm"
             isEnabled = "YES">
          </CommandLineArgument>
       </CommandLineArguments>
